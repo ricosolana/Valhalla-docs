@@ -1,0 +1,10 @@
+ /*
+ https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#customization
+ 
+:root > * {
+  --md-code-hl-string-color: #0FF1CE;
+  --md-code-hl-punctuation-color: #FFA0FF;
+  --md-code-hl-special-color: #00FFFF;
+  --md-code-hl-operator-color: #00FFFF;
+  --md-code-fg-color: #DDDDDD;
+}*/
