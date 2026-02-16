@@ -5,6 +5,13 @@ The bread-and-butter of Valhiem
 This class represents automatically synchronized networked objects 
 and states throughout Valheim gameplay. 
 
+!!! tip "Shared lifetime"
+
+    All ZDO's retrieved via ZDOManager or through callbacks have
+    shared references, and thus are safe to persistently store 
+    between calls unlike the previous project.
+    
+
 ## Instance Members
 
 ### `zdo.id`
@@ -77,6 +84,9 @@ and states throughout Valheim gameplay.
   > Returns `Int64`
 
   > Returns the time in ticks the zdo was created
+
+  > *Removed following Valheim version 0.x.x where ZDO's underwent 
+    a rehaul for memory efficiency*
   
 ## Data Variables
 
@@ -98,8 +108,8 @@ and states throughout Valheim gameplay.
 
   >
   ```lua
-  local t = zdo.get_float("plantTime", 200)
-  -- if "plantTime" does not exist, 200 is returned
+  local t = zdo.get_float("plantTime", 240)
+  -- if "plantTime" does not exist, 240 is returned
   ```
 
 ### Setters  
@@ -117,12 +127,11 @@ and states throughout Valheim gameplay.
   >
   ```lua
   zdo:set("RightBackItem", "chestplate")
-  
-  -- the above is equal to
   zdo:set(VUtils.String.GetStableHashCode("RightBackItem"), "chestplate")
 
-  -- internally, all keys are hashed to 32-bit numbers. 
-  -- the key is effectively lost, but obtainable through reverse lookup
+  -- the two lines above achieve the same outcome
+
+  -- all keys are 32-bit hashes, lost but obtainable through lookup
   ```
 
 ## ZDO <-> ZDO Connection

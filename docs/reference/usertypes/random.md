@@ -11,7 +11,7 @@ Accessing any of the Random properties or calling functions below will internall
 ### `Random.new()`
   > Returns `Random`
 
-  > Constructs a Random object iwith a randomly generated internal state.
+  > Constructs a Random object with a randomly generated internal state.
 
 ### `Random.new(seed)`
   > Returns `Random`
@@ -37,11 +37,11 @@ Accessing any of the Random properties or calling functions below will internall
 ### `random:range_float(minInclude: number, maxExclude: number)`
   > Returns `number`
 
-### `random:range_int(minInclude, maxExclude)`
+### `random:range_int(minInclude: number, maxExclude: number)`
   > Returns `number`
 
 ### `random.inside_unit_circle`
-  > Returns `vec2f` **readonly**
+  > Returns `vec2f` | **readonly**
 
 ### `random.on_unit_sphere`
   > Returns `vec3f` | **readonly**

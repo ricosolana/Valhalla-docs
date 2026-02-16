@@ -1,6 +1,8 @@
 # Avledet-docs
 Avledet dedicated server documentation
 
+ricosolana.github.io/Avledet-docs/
+
 ## Windows
 
 super simple install via pip

@@ -18,9 +18,50 @@ be fully included in this documentation
 
 - Debug library and several os functions are disabled to preserve sandboxing
 - Allowed functions:
-  - assert, error, ipairs, next, pairs, pcall, print, select, tonumber, tostring, type, unpack, _VERSION, xpcall
-  - coroutine.*, string.*, table.*, math.*
-  - os.clock, os.date, os.difftime, os.time 
+    - assert
+    - error
+    - ipairs
+    - next
+    - pairs
+    - pcall
+    - print
+    - select
+    - tonumber
+    - tostring
+    - type
+    - unpack
+    - _VERSION
+    - xpcall
+    - coroutine.*
+    - string.*
+    - table.*
+    - math.*
+    - os
+        - os.clock
+        - os.date
+        - os.difftime
+        - os.time 
+- Anything you do not see above is blacklisted. If I made a 
+  mistake, or you believe a function shouldn't be blacklisted,
+  make an issue request.
+
+# Shared lifetimes
+
+- You can safely assume that all objects exist within their own scope
+- Shared objects with shared lifetimes (shared/intrusive ptr):
+    - Peer
+    - Socket
+    - ZDO
+- If this means nothing to you, then no worries. Just write your 
+code as normal.
+
+!!! danger "Unsafe Code Usage"
+
+    The original project Valhalla used some unsafe "performance" techniques, such as 
+    passing ZDO pointers to Lua code which would have their memory freed.
+
+    Although I have removed most unsafe code as I stumble onto it, there might be
+    unsafe usages still floating around.
 
 ## sol2/lua Quirks
 
@@ -47,10 +88,3 @@ See the API [Random](usertypes/random.md) as an example for a tidy page layout.
 The first half of a reference section will be statically callable class methods, like constructors and other global/instance independent mutators.
 
 The second half will be instance members, which must be called on an instantiated or reference object.
-
-### Danger zone
-
-The previous project, Valhalla, used some awkward techniques for "performance",
-at the sacrifice of safety. This revival project aims to make the lua api fully safe.
-
-There are still some caveats
